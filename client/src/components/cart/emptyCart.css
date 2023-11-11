@@ -1,0 +1,14 @@
+.Component{
+    width: 80%;
+    height: 65vh;
+    background: #fff;
+    margin: 80px 140px;
+}
+.Container{
+    text-align: center;
+    padding-top: 70px;
+}
+.Image{
+    width: '15%';
+    height: 300px;
+}

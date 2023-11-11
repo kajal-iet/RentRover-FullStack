@@ -1,0 +1,120 @@
+.abcde {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(235, 229, 229, 0.836);
+    /* padding: 5px 8px; */
+  }
+  
+  
+  .FreshMango {
+    /* float: left; */
+    cursor: pointer;
+    width: 20px;
+    height: 58px;
+    color: #070101;
+    /* display: block; */
+    flex-grow: 1;
+    overflow: hidden;
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cherry{
+    float: left;
+    padding: 5px 25px;
+    color: #070101;
+  }
+  
+  
+  .category-box {
+    background-color: #fff;
+    /* padding: 20px; */
+    
+    margin: auto;
+    margin-top: 35px;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    width: 100%;
+  }
+  .category-heading {
+    font-size: 24px;
+  }
+  .category-list {
+    list-style-type: none;
+    padding: 10px;
+    width: 50%;
+    
+
+  }
+  .category-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 7px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+  }
+  .subcategory-list {
+    border-top: 1px solid #ccc;
+    /* padding: 10px; */
+    /* size: 20px; */
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    list-style-type: none;
+    margin-left: -31px;
+    text-align: left;
+    /* font-size: 18px; */
+    /* transform: translateX(-50%);  */
+  }
+  #first{
+    border-top: 1px solid #ccc;
+  }
+  .subitem{
+    /* width: 100%;
+    margin-left: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc; 
+    margin-bottom: 1px; */
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    padding: 10px 7px;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .category-item.open .subcategory-list {
+    display: block;
+  }
+  .arrow-button::before {
+    content: "▶";
+    margin-left: 5px;
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+  }
+  .category-item.open .arrow-button::before {
+    transform: rotate(90deg);
+  }
+  .containerbox{
+    /* background-color: #f0e7e7; */
+    border: 1px solid #ccc;
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+  }

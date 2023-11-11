@@ -1,0 +1,42 @@
+.flex-container {
+    display: flex;
+    background-color: #6ABF4C;
+    
+}
+
+.leftBox {
+   flex: 1;
+    
+}  
+.leftImg{
+    margin-right: 10px;
+    width: 100%;
+
+}
+
+.rightBox{
+    align-items: center;
+    flex:1;
+   
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color:#6ABF4C;
+    color: white;
+} 
+
+.form{
+    margin-top: 30px;
+    align-self: center;
+    margin-left: 35px;
+}
+.field{
+outline: none;
+padding: 5px 10px;
+margin-bottom: 10px;}
+
+.loginBtn{
+    background-color: #015e65;
+    color: white;
+    width: 100%;
+}
+

@@ -1,0 +1,90 @@
+.nav{
+    background-color: #015e65;
+   
+}
+.container-fluid{
+    background-color: #015e65;
+}
+.navbar-brand{
+    font-family:sans-serif ;
+    font-weight: 700;
+   
+}
+.nav-link{
+    color: #85ef57 !important;
+}
+.logo{
+    border-radius: 50%;  
+    height: 50px;
+    width: 50px;
+    position: relative;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.wrapper {
+    position: relative;
+    text-align: right;
+  }
+  .check2 {
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
+  }
+  .dropdown2 {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    margin-left: -100px;
+    width:300px;
+    flex-direction:column;
+    align-items:center;
+    border: 1px solid black;
+    border-radius: 2%;
+    background-color: aliceblue;
+    color: black;
+    padding: 10px;
+    gap: 5px;
+    right: 0;
+    left: 0;
+  }
+  .lines{
+    text-align: left;
+    
+  }
+  input:checked ~ .dropdown2 {
+    display: flex;
+  }
+  #dropdown22 {
+    width: fit-content;
+    margin-left: 0px;
+    border-radius: 5%;
+  }
+  #myUL {
+    /* Remove default list styling */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    position: absolute;
+    top: 65px;
+    width: 500px;
+    margin-left: 50px;
+  }
+  
+  #myUL li a {
+    border: 1px solid #ddd; /* Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove default text underline */
+    font-size: 18px; /* Increase the font-size */
+    color: black; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+
+  }
+  
+  #myUL li a:hover:not(.header) {
+    background-color: #eee; /* Add a hover effect to all links, except for headers */
+  }
+

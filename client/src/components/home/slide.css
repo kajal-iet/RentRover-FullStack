@@ -1,0 +1,25 @@
+.main{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.heading{
+    margin-top: 20px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    background-color: white;
+    font-size: 28px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.car{
+    margin-top: 20px;
+    background-color: white;
+}
+.image{
+/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+box-shadow: 5px 7px 10px 0px rgba(121, 124, 135, 1);
+transition: transform .2s;
+cursor: pointer;
+}
+.image:hover{
+    box-shadow: 0px 10px 20px 0px rgba(10, 7, 16, 0.2);
+}

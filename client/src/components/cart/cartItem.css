@@ -1,0 +1,48 @@
+.card2{
+    display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            
+}
+.left2{
+    flex: 1;
+            margin-right: 20px;
+    
+}
+.imgg{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.box{
+        flex: 2;
+    
+}
+.buttonCont{
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.small{
+    color: #878787;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.Cost{
+    font-size: 18px;
+    font-weight: 600;
+}
+.MRP{
+    color: #878787;
+}
+.discount{
+    color: #388E3C;
+}
+.remove{
+    margin-top: 20px;
+    font-size: 16px;
+    border: none;
+    padding: 5px 8px;
+}

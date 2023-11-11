@@ -1,0 +1,13 @@
+
+.overall{
+    display: flex;
+}
+.right{
+flex: 1;
+margin-top: 100px;
+float: left;
+font-size: 20px;
+}
+.cont{
+    /* margin-left: -200px; */
+}

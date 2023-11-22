@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import './cart.css'
+import axios from 'axios'
 // import { Box, Typography, Button, Grid, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
 
 import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
@@ -14,30 +15,27 @@ import CartItem from './CartItem';
 // import { payUsingPaytm } from '../../service/api';
 
 const Cart = () => {
-    const cartDetails = useSelector(state => state.cart);
-    const { cartItems } = cartDetails;
-    const { id } = useParams();
+    const [cartItems, setCartItems] = useState([]);
 
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        if(cartItems && id !== cartItems.id)   
-            dispatch(addToCart(id));
-    }, [dispatch, cartItems, id]);
+  useEffect( () => {
+    // Fetch cartItems from the database
+    const userId = localStorage.getItem('userId');
 
-    const removeItemFromCart = (id) => {
-        dispatch(removeFromCart(id));
+    if (userId) {
+      const url = `http://localhost:8000/liked-products/${userId}`;
+
+        axios.get(url)
+        .then((res) => {
+          if (res.data && res.data.cartItems) {
+            setCartItems(res.data.cartItems);
+          }
+        })
+        .catch((err) => {
+          console.error('Error fetching cartItems:', err);
+        });
     }
-
-    // const buyNow = async () => {
-    //     let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
-    //     var information = {
-    //         action: 'https://securegw-stage.paytm.in/order/process',
-    //         params: response    
-    //     }
-    //     post(information);
-    // }
-
+  }, []);
+ 
     return (
         <>
         { cartItems.length ? 
@@ -47,7 +45,7 @@ const Cart = () => {
                         <span className='Typo' style={{fontWeight: 600, fontSize: 18}}>My Cart ({cartItems?.length})</span>
                     </h1>
                         {   cartItems.map(item => (
-                                <CartItem item={item} removeItemFromCart={removeItemFromCart}/>
+                                <CartItem item={item} />
                             ))
                         }
                     <div className='bottom'>

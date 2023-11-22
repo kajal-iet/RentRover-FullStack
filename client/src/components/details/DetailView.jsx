@@ -57,18 +57,18 @@
 
 import React, { useState, useEffect } from 'react';
 import './detailview.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import axios from 'axios';
 import ProductDetail from './ProductDetail';
 import ActionItem from './ActionItem';
 
-const DetailView = () => {
+const DetailView = (props) => {
   
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { id } = useParams();
   const productId = String(id);
   const [product, setProduct] = useState(null);
-
+console.log("lohin",props.login)
   useEffect(() => {
     console.log("ek object",productId)
     const fetchProductDetails = async () => {
@@ -92,7 +92,7 @@ const DetailView = () => {
         <div className="container">
           <div className="overall">
             <div>
-              <ActionItem product={product} />
+              <ActionItem product={product} id={productId}/>
             </div>
             <div className="right">
               <div className="cont">{product.pname}</div>
@@ -106,7 +106,7 @@ const DetailView = () => {
                 &nbsp;&nbsp;&nbsp;
                 {/* <span style={{ color: '#388E3C' }}>{product.price.discount} off</span> */}
               </div>
-              <ProductDetail product={product} />
+              <ProductDetail product={product} data={props.login} helper={props.helper} />
             </div>
           </div>
         </div>

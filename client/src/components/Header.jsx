@@ -4,6 +4,7 @@ import img from "../images/logo3.png";
 import img1 from "../images/profileicon.png";
 import { useNavigate,Link } from "react-router-dom";
 import axios from 'axios'
+import stateCityData from "./stateCityData";
 // import { useSelector, useDispatch } from "react-redux"; // hooks
 // import { getProducts as listProducts } from "../redux/actions/productActions";
 
@@ -14,7 +15,32 @@ export default function Header(props) {
 	const [text, setText] = useState();
 	const [open, setOpen] = useState(true);
     const [products, setProducts] = useState([]);
-
+	const [selectedState, setSelectedState] = useState('');
+	const [selectedCity, setSelectedCity] = useState('');
+  
+	const handleStateChange = (event) => {
+	  const newState = event.target.value;
+	  setSelectedState(newState);
+	  setSelectedCity('');
+	};
+  
+	const handleLocationChange = (event) => {
+		const selectedLocation = event.target.value;
+		const [state, city] = selectedLocation.split('-');
+		// console.log(state,"state",city,"city");
+		if (city) {
+		  // City is selected
+		  setSelectedState(state);
+		  setSelectedCity(city);
+		  navigate(`/city/${city}`)
+		} else {
+		  // State is selected, reset city
+		  setSelectedState(selectedLocation);
+		  setSelectedCity('');
+		}
+	  };
+	
+  
 	useEffect(() => {
 		// Fetch products data from the server
 		const fetchProducts = async () => {
@@ -72,7 +98,7 @@ export default function Header(props) {
 	return (
 		<nav className="navbar navbar-expand-lg fs-5" style={{ backgroundColor: "#015e65" }}>
 			<div className="container-fluid">
-				<Link to="/" className="navbar-brand" style={{ textDecoration: "none" }}>
+				<Link to="/" className="navbar-brand me-3" style={{ textDecoration: "none" }}>
 					<img className="logo" src={img} />
 				</Link>
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,12 +106,32 @@ export default function Header(props) {
 				</button>
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
-						<li className="nav-item my-2">
-							<a className="nav-link" href="#">
-								About Us
-							</a>
-						</li>
-						<li className="nav-item dropdown my-2">
+						{/* <label htmlFor="location">Select Location:</label> */}
+						<li className="nav-item my-2 mt-3 ms-4 " style={{width:"15%"}}>
+						
+	 
+      	
+      <select className="form-select" id="location" value={`${selectedState}-${selectedCity}`} onChange={handleLocationChange}>
+        <option selected > {selectedCity? selectedCity :"Select Location"}</option>
+        {Object.keys(stateCityData).map((state, index) => (
+          <optgroup key={index} label={state} >
+            {Object.keys(stateCityData[state]).map((city, cityIndex) => (
+      <option key={cityIndex} value={`${state}-${city}`}>
+        {city}
+      </option>
+    ))}
+          </optgroup>
+        ))}
+      </select>
+</li>
+      {/* {selectedState && selectedCity && (
+        <p style={{fontSize:"14px",marginTop:"8px"}}>
+          You selected: {selectedCity}, {selectedState}
+        </p>
+      )} */}
+	
+						
+						{/* <li className="nav-item dropdown my-2">
 							<a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								For You
 							</a>
@@ -107,9 +153,9 @@ export default function Header(props) {
 									</a>
 								</li>
 							</ul>
-						</li>
+						</li> */}
 
-						<form className="d-flex ms-5 my-2" role="search" style={{ width: "" }} onSubmit={(e) => {
+						<form className="d-flex ms-3 my-2" role="search" style={{ width: "" }} onSubmit={(e) => {
     e.preventDefault(); // Prevent default form submission behavior
     handleSearchClick(text); // Call your search click handler
   }}>
@@ -147,16 +193,16 @@ export default function Header(props) {
 							{localStorage.getItem('token') ? (
 								<>
 									{" "}
-									<div className="wrapper">
+									<div className="wrapper" style={{zIndex:"1"}}>
 										<input id="toggler2" type="checkbox" className="check2" />
 										<label htmlFor="toggler2">
 											<img className="logo" src={img1} />
 										</label>
 										<div className="dropdown2" id="dropdown22">
 											<span style={{ whiteSpace: "nowrap", cursor: "pointer" }}>
-												<a href="/" style={{ textDecoration: "none", color: "black" }}>
-													<i className="bi bi-bag"></i> My Bag
-												</a>
+												<Link to="/myAds" style={{ textDecoration: "none", color: "black" }}>
+												<i class="bi bi-megaphone"></i> My Ads
+												</Link>
 											</span>
 
 											<span style={{ whiteSpace: "nowrap", cursor: "pointer" }}>

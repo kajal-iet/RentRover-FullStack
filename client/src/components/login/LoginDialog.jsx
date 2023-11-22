@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Dialog } from "@mui/material";
 import img from "../login/images/left2.png";
 import axios from "axios";
 import "./loginDialog.css";
 // import authenticateSignup from '../../service/api'
-import { authenticateLogin } from "../../service/api";
+// import { authenticateLogin } from "../../service/api";
 
 export default function LoginDialog(props) {
 	const signupInitialValues = {
@@ -59,7 +59,7 @@ export default function LoginDialog(props) {
 				if (response.data.token) {
 					props.helper({ email: email.email, password: email.password, open: false });
 					localStorage.setItem('token', response.data.token);
-					// localStorage.setItem('userId', response.data.userId);
+					localStorage.setItem('userId', response.data.userId);
 					// navigate('/');
 				}
 			}

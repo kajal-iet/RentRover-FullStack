@@ -37,7 +37,47 @@ export default function Citywise() {
     
   if (!selectedCity) {
     // Handle case where the city is not found
-    return <div>City not found</div>;
+    return <div className="upper">
+    <div className="top">
+        {city}
+    </div>
+    <section className='element'>
+    <div className="row">
+        <div className='element-col'  onClick={() => handleElementClick("Vehicles")}>
+            <span>Book Your Personal Vehicle <i className="bi bi-arrow-right" style={{float:"right"}}></i> </span>
+        </div>
+        <div className='element-col'  onClick={() => handleElementClick("Rooms")}>
+            <span>Book Hotels <i className="bi bi-arrow-right" style={{float:"right"}}></i> </span>
+        </div>
+        <div className='element-col'  onClick={() => handleElementClick("Clothes")}>
+            <span>Choose your desired Seasonal Wear <i className="bi bi-arrow-right" style={{float:"right"}}></i> </span>
+        </div>
+    </div>
+    <div className="row">
+        <div className='element-col'  onClick={() => handleElementClick("Guides")}>
+            <span>Hire a Tour Guide Beforehand <i className="bi bi-arrow-right" style={{float:"right"}}></i> </span>
+        </div>
+        <div className='element-col'  onClick={() => handleElementClick("Hiking Gear")}>
+            <span>Be Prepared with All the required Hiking Gear <i className="bi bi-arrow-right" style={{float:"right"}}></i> </span>
+        </div>
+        <div className='element-col'  onClick={() => handleElementClick("Camera & Accessories")}>
+            <span>Capture Your Journey with Best Cameras <i className="bi bi-arrow-right" style={{float:"right"}}></i> </span>
+        </div>
+    </div>
+    <div className="row">
+        <div className='element-col'  onClick={() => handleElementClick("Camping Gear")}>
+            <span>Let's Camp <i className="bi bi-arrow-right" style={{float:"right"}}></i> </span>
+        </div>
+        <div className='element-col'  onClick={() => handleElementClick("Other")}>
+            <span>Others <i className="bi bi-arrow-right" style={{float:"right"}}></i> </span>
+        </div>
+        <div className='element-col' id='empty'>
+            <span> </span>
+        </div>
+    </div>
+    </section>
+    <hr />
+</div>;
   }
   return (
     <div className='outer'>

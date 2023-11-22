@@ -61,7 +61,7 @@ function App() {
 			<div className="App">
 				<Header data={login} helper={helper} />
 
-				<DetailView />
+				<DetailView data={login} helper={helper}/>
 				<LoginDialog data={login} helper={helper} />
 			</div>
 		);

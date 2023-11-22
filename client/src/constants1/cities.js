@@ -1,4 +1,6 @@
-
+import img1 from "./1agra.png"
+import img3 from "./3agra.png"
+import img2 from "./2agra.png"
 
 export const cityData = [
     { 
@@ -18,7 +20,7 @@ export const cityData = [
         description: 'This electric kettle from Pigeon will soon become a travelers best friend, a hostelite saviour and an answer to all the midnight cravings. With this handy appliance, you can boil water and use it to make instant noodles, packet soup, coffee and green tea.',
         discount: 'Extra 10% Off', 
         tagline: 'Deal of the day' ,
-        images: ['https://hips.hearstapps.com/hmg-prod/images/worlds-smallest-dogs-1647336453.jpg?crop=0.493xw:0.987xh;0.505xw,0.00326xh&resize=640:*', 'https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/07-06/small+white+fluffy+dog+smiling+at+the+camera+in+close-up-min.jpg', 'https://www.pedigree.in/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4446/files/2022-04/355801736_shutterstock_705132340_01.jpg']
+        images: [img1, img2,img3]
 
     },
     { 

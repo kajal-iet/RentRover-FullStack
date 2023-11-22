@@ -2,21 +2,22 @@ import { useState, useEffect } from 'react';
 import './totalView.css'
 const TotalView = ({ cartItems }) => {
     const [price, setPrice] = useState(0);
-    const [discount, setDiscount] = useState(0)
+    // const [discount, setDiscount] = useState(0)
 
     useEffect(() => {
         totalAmount();
     }, [cartItems]);
     
     const totalAmount = () => {
-        let price = 0, discount = 0;
+        let price = 0;
         cartItems.map(item => {
-            price += item.price.mrp
-            discount += (item.price.mrp - item.price.cost) 
+            (price) += parseInt(item.price)
+            // discount += (item.price.mrp - item.price.cost) 
         })
         setPrice(price);
-        setDiscount(discount);
+        // setDiscount(discount);
     }
+    
 
     return (
         <div className='card' style={{textAlign:"left"}}>  {/* className={classes.component}> */}
@@ -25,18 +26,18 @@ const TotalView = ({ cartItems }) => {
             </div>
             <div className='Container1'>
                 <div className='Typography1'>Price ({cartItems?.length} item)
-                    <span className='Price' >₹{price}</span>
+                    <span className='Price' >₹{parseInt(price)}</span>
                 </div >
-                <div className='Typography1'>Discount
+                {/* <div className='Typography1'>Discount
                     <span className='Price'>-₹{discount}</span>
-                </div >
+                </div > */}
                 <div className='Typography1'>Delivery Charges
                     <span className='Price'>₹40</span>
                 </div >
                 <div className='TotalAmount1'>Total Amount
-                    <div className='Price'>₹{price - discount + 40}</div>
+                    <div className='Price'>₹{parseInt(price) + parseInt(40)}</div>
                 </div>
-                <div className='Discount'>You will save ₹{discount - 40} on this order</div>
+                {/* <div className='Discount'>You will save ₹{discount - 40} on this order</div> */}
             </div>
         </div>
     )

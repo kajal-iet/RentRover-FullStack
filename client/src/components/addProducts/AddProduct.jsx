@@ -50,6 +50,7 @@ function AddProduct() {
             formData.append('category', category)
             formData.append('pimage', pimage)
             formData.append('pcity', pcity)
+            formData.append('userId',localStorage.getItem('userId'))
             // formData.append('pimage2', pimage2)
             // formData.append('userId', localStorage.getItem('userId'))
            console.log("thedata is",formData)

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation,useNavigate } from 'react-router-dom';
+import NoProducts from './NoProducts';
 
 
 const FilteredProducts = () => {
   const [products, setProducts] = useState([]);
-  
+  const [count,setcount]=useState(0);
     const location = useLocation();
     const { city, category } = location.state || {};
   const navigate=useNavigate()
@@ -29,7 +30,11 @@ const FilteredProducts = () => {
 
     fetchProducts();
   }, []);
-
+  useEffect(() => {
+    // Update the count when products or filter criteria change
+    const filteredProducts = products.filter((item) => item.pcity === city && item.category === category);
+    setcount(filteredProducts.length);
+  }, [products, city, category]);
   return (
 
     <div className='container'>
@@ -37,7 +42,7 @@ const FilteredProducts = () => {
       <h2>{category} in {city}</h2>
       <div className='d-flex justify-content-center flex-wrap'>
         {products.map((item, index) => (
-           (item.pcity===city  && item.category===category) &&
+           (item.pcity===city  && item.category===category)  &&
           <div className="card" style={{ margin: "20px" }} key={index} onClick={()=>{
            navigate(`/product/${item._id}`)
           }}>
@@ -46,10 +51,13 @@ const FilteredProducts = () => {
             <h3 className="m-2 price-text text-danger"> Rs. {item.price} /- </h3>
             <p className="m-2"> {item.pname}  | {item.category} </p>
             <p className="m-2 text-success"> {item.pdesc} </p>
-          </div>
+          </div> 
         ))}
-      </div></div>
+      </div>
+      {!count && <NoProducts/>}
+      </div>
     </div>
+    
   );
 };
 

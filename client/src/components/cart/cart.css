@@ -14,7 +14,8 @@
     padding: 15px 24px;
     background: #fff;
     text-align: left;
-    border: 1px solid black;
+    border: 1px solid #ccc;
+    margin-bottom: -2px;
 }
 .bottom{
     padding: 16px 22px;

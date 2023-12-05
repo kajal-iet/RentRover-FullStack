@@ -1,25 +1,49 @@
-import img1 from "./1agra.png"
-import img3 from "./3agra.png"
+import img3 from "./1agra.png"
+import img1 from "./3agra.png"
 import img2 from "./2agra.png"
+import img4 from "../components/citywise/pics/ajmer/1.png"
+import img5 from "../components/citywise/pics/ajmer/2.png"
+import img6 from "../components/citywise/pics/ajmer/3.png"
+import img7 from "../components/citywise/pics/darjeeling/1.png"
+import img8 from "../components/citywise/pics/darjeeling/2.png"
+import img9 from "../components/citywise/pics/darjeeling/3.png"
+import img10 from "../components/citywise/pics/delhi/1.png"
+import img11 from "../components/citywise/pics/delhi/2.png"
+import img12 from "../components/citywise/pics/delhi/3.png"
+import img13 from "../components/citywise/pics/gangtok/1.png"
+import img14 from "../components/citywise/pics/gangtok/2.png"
+import img15 from "../components/citywise/pics/gangtok/3.png"
+import img16 from "../components/citywise/pics/goa/1.png"
+import img17 from "../components/citywise/pics/goa/2.png"
+import img18 from "../components/citywise/pics/goa/3.png"
+import img19 from "../components/citywise/pics/indore/1.png"
+import img20 from "../components/citywise/pics/indore/2.png"
+import img21 from "../components/citywise/pics/indore/3.png"
+import img22 from "../components/citywise/pics/jaipur/1.png"
+import img23 from "../components/citywise/pics/jaipur/2.png"
+import img24 from "../components/citywise/pics/jaipur/3.png"
+import img25 from "../components/citywise/pics/manali/1.png"
+import img26 from "../components/citywise/pics/manali/2.png"
+import img27 from "../components/citywise/pics/manali/3.png"
+import img28 from "../components/citywise/pics/mumbai/1.png"
+import img29 from "../components/citywise/pics/mumbai/2.png"
+import img30 from "../components/citywise/pics/mumbai/3.png"
+import img31 from "../components/citywise/pics/ranthambore/1.png"
+import img32 from "../components/citywise/pics/ranthambore/2.png"
+import img33 from "../components/citywise/pics/ranthambore/3.png"
+import img34 from "../components/citywise/pics/udaipur/1.png"
+import img35 from "../components/citywise/pics/udaipur/2.png"
+import img36 from "../components/citywise/pics/udaipur/3.png"
+
 
 export const cityData = [
     { 
         id: 'city1',
         url: 'https://upload.wikimedia.org/wikipedia/commons/6/68/Taj_Mahal%2C_Agra%2C_India.jpg', 
-        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70',
         title: {
             shortTitle: 'Agra',
-            longTitle: 'Pigeon FAVOURITE Electric Kettle  (1.5 L, Silver, Black)'
         }, 
-        price: {
-            mrp: 1195,
-            cost: 625,
-            discount: '47%'
-        },
-        quantity: 1,
-        description: 'This electric kettle from Pigeon will soon become a travelers best friend, a hostelite saviour and an answer to all the midnight cravings. With this handy appliance, you can boil water and use it to make instant noodles, packet soup, coffee and green tea.',
-        discount: 'Extra 10% Off', 
-        tagline: 'Deal of the day' ,
+        tagline: 'Loves Echo in Stone' ,
         images: [img1, img2,img3]
 
     },
@@ -39,8 +63,8 @@ export const cityData = [
         quantity: 1,
         description: 'This non-stick sandwich toaster .easy to use and very handy. Directly hold over flame to make tasty toasts and toasted sandwiches. Specially designed by keeping your needs in mind, the sandwich maker makes whatever youre doing simpler, smarter and better',
         discount: 'From 99+5% Off', 
-        tagline: 'Available Now' ,
-        images: ['https://m.media-amazon.com/images/S/aplus-media/vc/9f272ce9-a42c-4b00-a47e-aca23f80c4c9.__CR0,0,970,300_PT0_SX970_V1___.jpg', 'https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/07-06/small+white+fluffy+dog+smiling+at+the+camera+in+close-up-min.jpg', 'https://www.pedigree.in/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4446/files/2022-04/355801736_shutterstock_705132340_01.jpg']
+        tagline: 'Adventure in Every Breath' ,
+        images: [img25,img26,img27]
     },
     { 
         id: 'city3',
@@ -58,8 +82,8 @@ export const cityData = [
         quantity: 1,
         description: 'This unique product can tone your back muscles, reduce belly fat, improve blood circulation and also improves your body posture. It increases the stamina, energy and vitality of the body. The elastic resistance of the rubber training rope can be used to train and exercise in whichever way you want, according to your physical needs.',
         discount: 'Upto 70% Off', 
-        tagline: 'Deal of the Day' ,
-        images: ['https://hips.hearstapps.com/hmg-prod/images/worlds-smallest-dogs-1647336453.jpg?crop=0.493xw:0.987xh;0.505xw,0.00326xh&resize=640:*', 'https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/07-06/small+white+fluffy+dog+smiling+at+the+camera+in+close-up-min.jpg', 'https://www.pedigree.in/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4446/files/2022-04/355801736_shutterstock_705132340_01.jpg']
+        tagline: 'Tranquil Tales Unfold' ,
+        images: [img4,img5,img6]
 
     },
     { 
@@ -78,8 +102,8 @@ export const cityData = [
         quantity: 1,
         description: 'The Molife Sense 500, a brilliant smartwatch with a beautiful large display. Say hello to the infinity 1.7-inch display with 2.5D curved edges. Thanks to seamless Bluetooth 5.0 connectivity, you wont have to keep waiting. Bring a change to your outfit every day with changeable straps. A splash of color every day keeps the boredom away.',
         discount: 'Grab Now', 
-        tagline: 'AT BEST PRICES' ,
-        images: ['https://hips.hearstapps.com/hmg-prod/images/worlds-smallest-dogs-1647336453.jpg?crop=0.493xw:0.987xh;0.505xw,0.00326xh&resize=640:*', 'https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/07-06/small+white+fluffy+dog+smiling+at+the+camera+in+close-up-min.jpg', 'https://www.pedigree.in/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4446/files/2022-04/355801736_shutterstock_705132340_01.jpg']
+        tagline: 'Misty Hills, Warm Hearts' ,
+        images: [img7,img8,img9]
 
     },
     { 
@@ -98,8 +122,8 @@ export const cityData = [
         quantity: 1,
         description: '',
         discount: 'From ₹499', 
-        tagline: 'The City Of Lakes' ,
-        images: ['https://hips.hearstapps.com/hmg-prod/images/worlds-smallest-dogs-1647336453.jpg?crop=0.493xw:0.987xh;0.505xw,0.00326xh&resize=640:*', 'https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/07-06/small+white+fluffy+dog+smiling+at+the+camera+in+close-up-min.jpg', 'https://www.pedigree.in/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4446/files/2022-04/355801736_shutterstock_705132340_01.jpg']
+        tagline: 'Royal Charm with Lakeside magic' ,
+        images: [img34,img35,img36]
 
     },
     { 
@@ -118,8 +142,8 @@ export const cityData = [
         quantity: 1,
         description: 'Table Fan. Perfect size fan for use on a table, desk or in an RV. Whisper quiet, powerful airflow and reliable operation in a compact 6" size. Two adjustable speeds to customize airflow: high or low settings. Tough break-resistant ABS plastic blades. ',
         discount: 'Minimum 40% Off', 
-        tagline: 'Cameras & More' ,
-        images: ['https://hips.hearstapps.com/hmg-prod/images/worlds-smallest-dogs-1647336453.jpg?crop=0.493xw:0.987xh;0.505xw,0.00326xh&resize=640:*', 'https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/07-06/small+white+fluffy+dog+smiling+at+the+camera+in+close-up-min.jpg', 'https://www.pedigree.in/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4446/files/2022-04/355801736_shutterstock_705132340_01.jpg']
+        tagline: 'Pink City, Timeless Elegance' ,
+        images: [img22,img23,img24]
 
     },
     { 
@@ -138,8 +162,108 @@ export const cityData = [
         quantity: 1,
         description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
         discount: 'Minimum 50% Off', 
-        tagline: 'Book your vehicles now!' ,
-        images: ['https://hips.hearstapps.com/hmg-prod/images/worlds-smallest-dogs-1647336453.jpg?crop=0.493xw:0.987xh;0.505xw,0.00326xh&resize=640:*', 'https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/07-06/small+white+fluffy+dog+smiling+at+the+camera+in+close-up-min.jpg', 'https://www.pedigree.in/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf4446/files/2022-04/355801736_shutterstock_705132340_01.jpg']
+        tagline: 'Experience wild majesty up close' ,
+        images: [img31,img32,img33]
+
+    },
+    { 
+        id: 'city8',
+        url: 'https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg',
+        detailUrl: 'https://www.tripsavvy.com/thmb/dV7zQhV4qJ_mPL8AmzjenGByzk8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/tres-bengala-tigres-en-frente-de-turista-de-520373860-735d4cd8c3b147d98cce1f158d0eefab.jpg', 
+        title: {
+            shortTitle: 'Delhi',
+            longTitle: 'Where History Meets Modern Marvels'
+        }, 
+        price: {
+            mrp: 2990,
+            cost: 1199,
+            discount: '59%'
+        },
+        quantity: 1,
+        description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
+        discount: 'Minimum 50% Off', 
+        tagline: 'Where History Meets Modern Marvels' ,
+        images: [img10,img11,img12]
+
+    },
+    { 
+        id: 'city9',
+        url: 'https://t3.ftcdn.net/jpg/01/13/01/70/240_F_113017086_PtETiC3OfSiiAfK9q8egOlvdjmwORkBh.jpg',
+        detailUrl: 'https://www.tripsavvy.com/thmb/dV7zQhV4qJ_mPL8AmzjenGByzk8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/tres-bengala-tigres-en-frente-de-turista-de-520373860-735d4cd8c3b147d98cce1f158d0eefab.jpg', 
+        title: {
+            shortTitle: 'Indore',
+            longTitle: 'boAt Rockerz 235v2 with ASAP charging Version 5.0 Bluetooth Headset '
+        }, 
+        price: {
+            mrp: 2990,
+            cost: 1199,
+            discount: '59%'
+        },
+        quantity: 1,
+        description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
+        discount: 'Minimum 50% Off', 
+        tagline: 'The Heart of Heritage and Harmony' ,
+        images: [img19,img20,img21]
+
+    },
+    { 
+        id: 'city10',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Mumbai_Aug_2018_%2843397784544%29.jpg/640px-Mumbai_Aug_2018_%2843397784544%29.jpg',
+        detailUrl: 'https://www.tripsavvy.com/thmb/dV7zQhV4qJ_mPL8AmzjenGByzk8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/tres-bengala-tigres-en-frente-de-turista-de-520373860-735d4cd8c3b147d98cce1f158d0eefab.jpg', 
+        title: {
+            shortTitle: 'Mumbai',
+            longTitle: 'boAt Rockerz 235v2 with ASAP charging Version 5.0 Bluetooth Headset '
+        }, 
+        price: {
+            mrp: 2990,
+            cost: 1199,
+            discount: '59%'
+        },
+        quantity: 1,
+        description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
+        discount: 'Minimum 50% Off', 
+        tagline: 'The City of Dreams and Diversity' ,
+        images: [img28,img29,img30]
+
+    },
+    { 
+        id: 'city11',
+        url: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/10/18/16/goa-overview.jpg',
+        detailUrl: 'https://www.tripsavvy.com/thmb/dV7zQhV4qJ_mPL8AmzjenGByzk8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/tres-bengala-tigres-en-frente-de-turista-de-520373860-735d4cd8c3b147d98cce1f158d0eefab.jpg', 
+        title: {
+            shortTitle: 'Goa',
+            longTitle: 'boAt Rockerz 235v2 with ASAP charging Version 5.0 Bluetooth Headset '
+        }, 
+        price: {
+            mrp: 2990,
+            cost: 1199,
+            discount: '59%'
+        },
+        quantity: 1,
+        description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
+        discount: 'Minimum 50% Off', 
+        tagline: 'The Land of Sun, Sand, and Spirit' ,
+        images: [img16,img17,img18]
+
+    },
+    { 
+        id: 'city12',
+        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUWcDQt5JKo4RJqvGeyx8FuEVwzefyO1la4P5scqcxVp8jshkyYtwVgxuQQkCeMEfERqo&usqp=CAU',
+        detailUrl: 'https://www.tripsavvy.com/thmb/dV7zQhV4qJ_mPL8AmzjenGByzk8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/tres-bengala-tigres-en-frente-de-turista-de-520373860-735d4cd8c3b147d98cce1f158d0eefab.jpg', 
+        title: {
+            shortTitle: 'Gangtok',
+            longTitle: 'boAt Rockerz 235v2 with ASAP charging Version 5.0 Bluetooth Headset '
+        }, 
+        price: {
+            mrp: 2990,
+            cost: 1199,
+            discount: '59%'
+        },
+        quantity: 1,
+        description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
+        discount: 'Minimum 50% Off', 
+        tagline: 'Where Serenity Meets the Himalayas' ,
+        images: [img13,img14,img15]
 
     }
 ];

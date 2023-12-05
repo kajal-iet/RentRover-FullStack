@@ -96,12 +96,12 @@ console.log("lohin",props.login)
             </div>
             <div className="right">
               <div className="cont">{product.pname}</div>
-              <div className="cont" style={{ marginTop: 5, color: '#878787', fontSize: 14 }}>
+              {/* <div className="cont" style={{ marginTop: 5, color: '#878787', fontSize: 14 }}>
                 8 Ratings & 1 Reviews
                 
-              </div>
+              </div> */}
               <div className="cont">
-                <span style={{ fontSize: 28 }}>₹{product.price}</span>&nbsp;&nbsp;&nbsp;
+                <span style={{ fontSize: 28 }}>₹{product.price}/day</span>&nbsp;&nbsp;&nbsp;
                 
                 &nbsp;&nbsp;&nbsp;
                 {/* <span style={{ color: '#388E3C' }}>{product.price.discount} off</span> */}

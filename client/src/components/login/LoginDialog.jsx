@@ -55,7 +55,7 @@ export default function LoginDialog(props) {
 			const response = await axios.post('http://localhost:8000/login', { email: email.email, password: email.password });
 			
 			if (response.data.message) {
-				alert(response.data.message)
+				// alert(response.data.message)
 				if (response.data.token) {
 					props.helper({ email: email.email, password: email.password, open: false });
 					localStorage.setItem('token', response.data.token);

@@ -9,7 +9,7 @@ import img7 from './pics/7c.png'
 export default function 
 () {
   return (
-    <div style={{backgroundColor:"white",marginBottom:"20px", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",overflow:"overlay"}}>
+    <div style={{backgroundColor:"white",marginTop:"12px",marginBottom:"20px", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",overflow:"overlay"}}>
     <div className='container my-3' style={{display:"flex",justifyContent:"space-between", backgroundColor:"white",width:"100%"}}>
         <figure className="products">
   <img src={img} className="img" style={{height:"120px",width:"120px"}} alt="..."/>

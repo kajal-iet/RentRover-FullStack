@@ -1,8 +1,10 @@
 import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import img1 from './pics/page1.png'
+import img1 from '../../citywise/pics/banner pics/1.png'
 import img2 from './pics/page2.png'
+import img3 from '../../citywise/pics/banner pics/2.png'
+import img4 from '../../citywise/pics/banner pics/3.png'
 const responsive = {
     
     desktop: {
@@ -29,7 +31,7 @@ export default function Banner() {
     draggable={false}
     infinite={true}
   autoPlay={true}
-  autoPlaySpeed={3000}
+  autoPlaySpeed={3500}
   keyBoardControl={true}
     >
         <div>
@@ -37,6 +39,12 @@ export default function Banner() {
         </div>
         <div >
         <img src={img2} style={{width:"100%",height:"380px"}}/>
+        </div>
+        <div >
+        <img src={img3} style={{width:"100%",height:"380px"}}/>
+        </div>
+        <div >
+        <img src={img4} style={{width:"100%",height:"380px"}}/>
         </div>
 
     </Carousel></div>

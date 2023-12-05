@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import './citywise.css'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
+import img1 from "./pics/common/1.png"
+import img2 from "./pics/common/2.png"
+import img3 from "./pics/common/3.png"
 import { useNavigate, useParams } from 'react-router-dom';
 import { cityData } from '../../constants1/cities';
 import FilteredProducts from '../filteredProducts/FilteredProducts';
@@ -77,6 +79,29 @@ export default function Citywise() {
     </div>
     </section>
     <hr />
+    <div className="lowermain">
+        <div className="lower">
+        <Carousel responsive={responsive}
+    swipeable={false}
+    draggable={false}
+    infinite={true}
+  autoPlay={true}
+  autoPlaySpeed={3000}
+  keyBoardControl={true}
+    >
+       
+        
+              <div>
+                <img src={img1} style={{ width: "100%", height: "380px" }} alt={city} /> </div>
+                <div>  <img src={img2} style={{ width: "100%", height: "380px" }} alt={city} /> </div>
+                <div> <img src={img3} style={{ width: "100%", height: "380px" }} alt={city} />
+              </div>
+           
+
+        
+    </Carousel>
+   
+        </div></div>
 </div>;
   }
   return (

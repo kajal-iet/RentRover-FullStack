@@ -25,7 +25,7 @@ export default function Slide({onCityClick}) {
 
   return (
     <>
-    <div className='main' style={{backgroundColor:"white"}}>
+    <div className='main' style={{backgroundColor:"white",marginBottom:"12px"}}>
     <div className='heading'>
         <span>Explore India</span>
     </div>
@@ -36,7 +36,7 @@ export default function Slide({onCityClick}) {
     draggable={false}
     infinite={true}
   autoPlay={true}
-  autoPlaySpeed={3000}
+  autoPlaySpeed={1500}
   keyBoardControl={true}
   centerMode={true}
     >

@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider, Routes, Route, BrowserRouter } fro
 import Cart from "./components/cart/Cart";
 import FilteredProducts from "./components/filteredProducts/FilteredProducts";
 import SearchFiltered from "./components/filteredProducts/SearchFiltered";
+import MyProducts from "./components/myproducts/MyProducts";
 
 function App() {
 	const loginInitialValues = {
@@ -126,6 +127,10 @@ function App() {
 		{
 			path: "/addproduct",
 			element: <AddP />,
+		},
+		{
+			path: "/my-product",
+			element: <MyProducts />,
 		},
 		{
 			path: "/catpage",

@@ -18,16 +18,37 @@ export default function Header(props) {
 	const [selectedState, setSelectedState] = useState('');
 	const [selectedCity, setSelectedCity] = useState('');
   
-	const handleStateChange = (event) => {
-	  const newState = event.target.value;
-	  setSelectedState(newState);
-	  setSelectedCity('');
-	};
-  
+	
+	const calculateDistance=(lat1, lon1, lat2, lon2) => {
+		const R = 6371; // Radius of the earth in km
+		const dLat = deg2rad(lat2 - lat1);
+		const dLon = deg2rad(lon2 - lon1);
+		const a =
+		  Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+		  Math.cos(deg2rad(lat1)) *
+			Math.cos(deg2rad(lat2)) *
+			Math.sin(dLon / 2) *
+			Math.sin(dLon / 2);
+		const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		const distance = R * c; // Distance in km
+		
+		return distance;
+	  }
+	  
+	  function deg2rad(deg) {
+		return deg * (Math.PI / 180);
+	  }
+	  
 	const handleLocationChange = (event) => {
 		const selectedLocation = event.target.value;
 		const [state, city] = selectedLocation.split('-');
 		// console.log(state,"state",city,"city");
+		const selectedOption = event.target.options[event.target.selectedIndex];
+		const latitude = selectedOption.getAttribute("data-latitude");
+  const longitude = selectedOption.getAttribute("data-longitude");
+ console.log("state",state,"city",city);
+  // Save to localStorage or perform any other actions
+  localStorage.setItem('userLoc', `${latitude},${longitude}`);
 		if (city) {
 		  // City is selected
 		  setSelectedState(state);
@@ -89,7 +110,8 @@ export default function Header(props) {
 	  };
 	  const handleSearchClick = (text) => {
 		// Navigate to the product details page when a suggestion is clicked
-		navigate('/search-filtered', { state: { text:text } });
+		
+		navigate('/search-filtered', { state: { text:text} });
 
 		// Clear the input field and close the dropdown
 		setText('');
@@ -112,11 +134,12 @@ export default function Header(props) {
 	 
       	
       <select className="form-select" id="location" value={`${selectedState}-${selectedCity}`} onChange={handleLocationChange}>
-        <option selected > {selectedCity? selectedCity :"Select Location"}</option>
-        {Object.keys(stateCityData).map((state, index) => (
+        {/* <option selected  value={`${item.latitude},${item.longitude}`}> {selectedCity? selectedCity :"Select Location"}</option> */}
+		<option value="">{selectedCity? selectedCity : "Select Location"}</option>
+		{Object.keys(stateCityData).map((state, index) => (
           <optgroup key={index} label={state} >
             {Object.keys(stateCityData[state]).map((city, cityIndex) => (
-      <option key={cityIndex} value={`${state}-${city}`}>
+      <option key={cityIndex} value={`${state}-${city}`} data-latitude={stateCityData[state][city].latitude} data-longitude={stateCityData[state][city].longitude}>
         {city}
       </option>
     ))}
@@ -124,36 +147,7 @@ export default function Header(props) {
         ))}
       </select>
 </li>
-      {/* {selectedState && selectedCity && (
-        <p style={{fontSize:"14px",marginTop:"8px"}}>
-          You selected: {selectedCity}, {selectedState}
-        </p>
-      )} */}
-	
-						
-						{/* <li className="nav-item dropdown my-2">
-							<a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								For You
-							</a>
-							<ul className="dropdown-menu my-2">
-								<li>
-									<a className="dropdown-item" href="#">
-										Cabs
-									</a>
-								</li>
-								<li>
-									<a className="dropdown-item" href="#">
-										Hotels
-									</a>
-								</li>
-
-								<li>
-									<a className="dropdown-item" href="#">
-										Camera & Accessories
-									</a>
-								</li>
-							</ul>
-						</li> */}
+     
 
 						<form className="d-flex ms-3 my-2" role="search" style={{ width: "" }} onSubmit={(e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -175,6 +169,28 @@ export default function Header(props) {
 			  product.pname.toLowerCase().includes(text.toLowerCase()) ||
 			  product.pdesc.toLowerCase().includes(text.toLowerCase())
               )
+			  .filter((product) => {
+				const userLoc = localStorage.getItem("userLoc");
+				// console.log("user",userLoc)
+				if (userLoc && userLoc!=="null,null") {
+				  const [userLat, userLng] = userLoc.split(",").map(Number);
+				  
+					
+				  
+				  const productLoc = product.pLoc.coordinates;
+				//   console.log("ohhh",productLoc)
+				  if(productLoc){
+				  const distance = calculateDistance(userLat, userLng, productLoc[0], productLoc[1]); // Swap coordinates if needed
+	              console.log("the distance is:" , distance)
+				  // Consider products within 60km distance
+				  return distance <= 200;}
+				  else{
+					return;
+				  }
+				}
+				// console.log("mic testi")
+				return true; // No user location, include all products
+			  })
               .map((product) => (
                 <li key={product._id} >
                   <Link
@@ -200,7 +216,7 @@ export default function Header(props) {
 										</label>
 										<div className="dropdown2" id="dropdown22">
 											<span style={{ whiteSpace: "nowrap", cursor: "pointer" }}>
-												<Link to="/myAds" style={{ textDecoration: "none", color: "black" }}>
+												<Link to="/my-product" style={{ textDecoration: "none", color: "black" }}>
 												<i class="bi bi-megaphone"></i> My Ads
 												</Link>
 											</span>
@@ -242,7 +258,7 @@ export default function Header(props) {
 										<span className="position-absolute top-3 start-90 translate-middle bg-warning rounded-circle" style={{ fontSize: "10px", color: "white", padding: "3px 7px 3px 7px", fontWeight: "bold" }}>
 											{cartItems.length}{" "}
 										</span>
-										<span class="visually-hidden">unread messages</span>
+										<span class="visually-hidden">Cart Items</span>
 									</i>
 								) : (
 									<i className="bi bi-cart3"></i>

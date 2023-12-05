@@ -22,7 +22,7 @@ const Home= ()=> {
     dispatch(getProducts())
   },[dispatch])
   return (
-    <div style={{backgroundColor:"#DCDCDC",paddingLeft:"20px",paddingRight:"20px",paddingTop:"5px",paddingBottom:"5px",marginBottom:"25px"}}>
+    <div style={{backgroundColor:"#DCDCDC",paddingLeft:"20px",paddingRight:"20px",paddingTop:"5px",paddingBottom:"5px",marginBottom:"0px"}}>
         <Navbar/>
         <Banner/>
         <Slide onCityClick={handleCityClick} products={products}/>

@@ -25,7 +25,7 @@ export default function Slide({onCityClick}) {
 
   return (
     <>
-    <div className='main' style={{backgroundColor:"white",marginBottom:"12px"}}>
+    <div className='main' style={{backgroundColor:"white",marginBottom:"12px",paddingBottom:"8px"}}>
     <div className='heading'>
         <span>Explore India</span>
     </div>

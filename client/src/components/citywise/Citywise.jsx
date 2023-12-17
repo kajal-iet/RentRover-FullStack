@@ -103,7 +103,7 @@ export default function Citywise() {
    
         </div></div>
 </div>;
-  }
+  } else{
   return (
     <div className='outer'>
         <div className="upper">
@@ -157,15 +157,7 @@ export default function Citywise() {
   autoPlaySpeed={3000}
   keyBoardControl={true}
     >
-        {/* <div>
-        <img src={img} style={{width:"100%",height:"380px"}}/>
-        </div>
-        <div>
-        <img src={img1} style={{width:"100%",height:"380px"}}/>
-        </div>
-        <div>
-        <img src={img2} style={{width:"100%",height:"380px"}}/>
-        </div> */}
+       
           {selectedCity.images.map(image => (
               <div key={image}>
                 <img src={image} style={{ width: "100%", height: "380px" }} alt={selectedCity.title} />
@@ -174,14 +166,8 @@ export default function Citywise() {
 
         
     </Carousel>
-     {/* <Carousel responsive={responsive} infinite autoPlay autoPlaySpeed={3000}>
-            {carouselImages.map((image, index) => (
-              <div key={index}>
-                <img src={image} style={{ width: '100%', height: '380px' }} alt={`City ${index + 1}`} />
-              </div>
-            ))}
-          </Carousel> */}
+   
         </div></div>
     </div>
-  )
+  )}
 }

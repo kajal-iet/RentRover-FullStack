@@ -5,6 +5,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { getProducts } from '../../redux/actions/productActions';
 import Slide from './Slide';
 import { useNavigate } from 'react-router-dom';
+import Rent from './RENT/Rent';
 
 const Home= ()=> {
   const {products}=useSelector(state=>state.getProducts)
@@ -26,6 +27,7 @@ const Home= ()=> {
         <Navbar/>
         <Banner/>
         <Slide onCityClick={handleCityClick} products={products}/>
+        <Rent/>
     </div>
   )
 }

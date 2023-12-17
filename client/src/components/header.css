@@ -12,6 +12,7 @@
 }
 .nav-link{
     color: #85ef57 !important;
+    cursor: pointer;
 }
 .logo{
     border-radius: 50%;  

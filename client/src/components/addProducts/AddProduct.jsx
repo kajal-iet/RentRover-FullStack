@@ -110,7 +110,7 @@ function AddProduct() {
       }, [userCoordinates, stateCityData]);
       
     const handleApi = () => {
-
+     console.log("anushka kajal madarchod")
         navigator.geolocation.getCurrentPosition((position) => {
             const formData = new FormData();
             formData.append('plat', position.coords.latitude)
@@ -121,6 +121,7 @@ function AddProduct() {
             formData.append('category', category)
             formData.append('pimage', pimage)
             formData.append('pcity', pcity)
+
             // formData.append('userId',localStorage.getItem('userId'))
             // formData.append('pimage2', pimage2)
             formData.append('userId', localStorage.getItem('userId'))
@@ -134,11 +135,13 @@ function AddProduct() {
                 .then((res) => {
                     if (res.data.message) {
                         // alert(res.data.message); 
+                        console.log("button clicked");
                         navigate('/')
                     }
                 })
                 .catch((err) => {
                     // alert(err.response.data)
+                    console.log("error is",err);
                 })
         })
 
@@ -214,7 +217,7 @@ function AddProduct() {
                         setpimage2(e.target.files[0])
                     }} /> */}</div>
                     <div className="footer">
-                <button type="submit" onSubmit={handleApi} className="btn btn-primary mt-3" id="btnn22"> SUBMIT </button></div>
+                <button type="submit" onClick={handleApi} className="btn btn-primary mt-3" id="btnn22"> SUBMIT </button></div>
                 </form>
             </div>
             

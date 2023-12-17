@@ -16,7 +16,7 @@ import CartItem from './CartItem';
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
-
+    const [loading, setLoading] = useState(true);
   useEffect( () => {
     // Fetch cartItems from the database
     const userId = localStorage.getItem('userId');
@@ -24,7 +24,19 @@ const Cart = () => {
     if (userId) {
       const url = `http://localhost:8000/liked-products/${userId}`;
 
-        axios.get(url)
+  //       axios.get(url)
+  //       .then((res) => {
+  //         if (res.data && res.data.cartItems) {
+  //           setCartItems(res.data.cartItems);
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.error('Error fetching cartItems:', err);
+  //       });
+  //   }
+  // }, []);
+  axios
+        .get(url)
         .then((res) => {
           if (res.data && res.data.cartItems) {
             setCartItems(res.data.cartItems);
@@ -32,13 +44,19 @@ const Cart = () => {
         })
         .catch((err) => {
           console.error('Error fetching cartItems:', err);
+        })
+        .finally(() => {
+          setLoading(false); // Set loading to false after data is fetched
         });
     }
   }, []);
  
     return (
         <>
-        { cartItems.length ? 
+         {loading ? (
+          <div>
+        <h2 style={{marginTop:"50px"}}>Loading....</h2></div> // Display a loading indicator while fetching data
+      ) : cartItems.length ?( 
             <div className='component2' style={{backgroundColor:"red"}}>
                 <div className='left'>
                     <h1 className='Header2'>
@@ -55,7 +73,7 @@ const Cart = () => {
                 <div className='right' >
                     <TotalView cartItems={cartItems} />
                 </div>
-            </div> : <EmptyCart />
+            </div>) : <EmptyCart />
         }
         </>
 

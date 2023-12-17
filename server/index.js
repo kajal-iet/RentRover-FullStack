@@ -55,14 +55,35 @@ let schema = new mongoose.Schema({
 });
 schema.index({ pLoc: '2dsphere' });
 const Products = mongoose.model("Products", schema);
-const Users = mongoose.model("Users", {
+// const Users = mongoose.model("Users", {
+//   email: String,
+//   password: String,
+//   mobile: String,
+//   username: String,
+//   cartItems: [{ type: mongoose.Schema.Types.ObjectId, ref: "Products" }],
+// });
+// Users.pre('remove', function (next) {
+//   // Remove associated products when a user is deleted
+//   Products.remove({ userid: this._id }).exec();
+//   next();
+// });
+const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   mobile: String,
   username: String,
-  cartItems: [{ type: mongoose.Schema.Types.ObjectId, ref: "Products" }],
+  cartItems: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Products' }],
 });
 
+// Add a pre hook to handle cascading delete
+userSchema.pre('remove', function (next) {
+  // Remove associated products when a user is deleted
+  Products.deleteMany({ userid: this._id })
+    .then(() => next())
+    .catch((err) => next(err));
+});
+
+const Users = mongoose.model('Users', userSchema);
 // app.get('/search', productController.search)
 // app.post('/like-product', userController.likeProducts)
 // app.post('/add-product', upload.fields([{ name: 'pimage' }, { name: 'pimage2' }]), productController.addProduct)
@@ -71,6 +92,7 @@ const Users = mongoose.model("Users", {
 // app.post('/liked-products', userController.likedProducts)
 // app.post('/my-products', productController.myProducts)
 app.post("/addproduct", upload.single("pimage"), (req, res) => {
+  console.log("kajal")
     const plat = req.body.plat;
     const plong = req.body.plong;
   const pname = req.body.pname;
@@ -223,10 +245,12 @@ app.post("/remove-from-cart", async (req, res) => {
   res.send({ message: "Item removed from cart", updatedUser });
 });
 app.post("/signup", (req, res) => {
+  console.log("boy is here",req.body);
+
   const email = req.body.email;
   const password = req.body.password;
-  const mobile = req.body.mobile;
-  const username = req.body.username;
+  const mobile = req.body.phone;
+  const username = req.body.name;
   const user = new Users({
     email: email,
     password: password,

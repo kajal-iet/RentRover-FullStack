@@ -39,27 +39,64 @@ export default function Header(props) {
 		return deg * (Math.PI / 180);
 	  }
 	  
-	const handleLocationChange = (event) => {
-		const selectedLocation = event.target.value;
-		const [state, city] = selectedLocation.split('-');
-		// console.log(state,"state",city,"city");
-		const selectedOption = event.target.options[event.target.selectedIndex];
-		const latitude = selectedOption.getAttribute("data-latitude");
-  const longitude = selectedOption.getAttribute("data-longitude");
- console.log("state",state,"city",city);
-  // Save to localStorage or perform any other actions
-  localStorage.setItem('userLoc', `${latitude},${longitude}`);
-		if (city) {
-		  // City is selected
-		  setSelectedState(state);
-		  setSelectedCity(city);
-		  navigate(`/city/${city}`)
-		} else {
-		  // State is selected, reset city
-		  setSelectedState(selectedLocation);
-		  setSelectedCity('');
-		}
-	  };
+// 	const handleLocationChange = (event) => {
+// 		const selectedLocation = event.target.value;
+// 		const [state, city] = selectedLocation.split('-');
+// 		// console.log(state,"state",city,"city");
+// 		const selectedOption = event.target.options[event.target.selectedIndex];
+// 		const latitude = selectedOption.getAttribute("data-latitude");
+//   const longitude = selectedOption.getAttribute("data-longitude");
+//  console.log("state",state,"city",city);
+//   // Save to localStorage or perform any other actions
+//   localStorage.setItem('userLoc', `${latitude},${longitude}`);
+// 		if (city) {
+// 		  // City is selected
+// 		  setSelectedState(state);
+// 		  setSelectedCity(city);
+// 		  navigate(`/city/${city}`)
+// 		} else {
+// 		  // State is selected, reset city
+// 		  setSelectedState(selectedLocation);
+// 		  setSelectedCity('');
+// 		}
+// 	  };
+
+const handleLocationChange = (event) => {
+	
+	const selectedLocation = event.target.value;
+	const [state, city] = selectedLocation.split('-');
+	const selectedOption = event.target.options[event.target.selectedIndex];
+	const latitude = selectedOption.getAttribute("data-latitude");
+	const longitude = selectedOption.getAttribute("data-longitude");
+  
+	// Save to localStorage or perform any other actions
+	localStorage.setItem('userLoc', `${latitude},${longitude}`);
+  
+	if (city) {
+	  // City is selected
+	  setSelectedState(state);
+	  setSelectedCity(city);
+	  navigate(`/city/${city}`);
+	  window.location.reload();
+	} else {
+	  // State is selected, reset city
+	  setSelectedState(state);
+	  setSelectedCity('');
+	}
+  };
+  
+  // ...
+  
+  useEffect(() => {
+	// Fetch user's initial location from localStorage
+	const initialLocation = localStorage.getItem('userLoc');
+	if (initialLocation) {
+	  const [state, city] = initialLocation.split(',');
+	  setSelectedState(state);
+	  setSelectedCity(city);
+	}
+  }, []); // Run this effect only once on component mount
+  
 	
   
 	useEffect(() => {
@@ -133,8 +170,8 @@ export default function Header(props) {
 						
 	 
       	
-      <select className="form-select" id="location" value={`${selectedState}-${selectedCity}`} onChange={handleLocationChange}>
-        {/* <option selected  value={`${item.latitude},${item.longitude}`}> {selectedCity? selectedCity :"Select Location"}</option> */}
+      <select className="form-select" id="location" value={selectedCity} onChange={handleLocationChange}>
+        
 		<option value="">{selectedCity? selectedCity : "Select Location"}</option>
 		{Object.keys(stateCityData).map((state, index) => (
           <optgroup key={index} label={state} >
@@ -250,7 +287,9 @@ export default function Header(props) {
 							</a>
 						</li>
 						<li className="nav-item mx-4 my-2">
-							<Link to="/cart" className="nav-link" >
+							<a className="nav-link" onClick={()=>{if (!localStorage.getItem('token')) {
+            props.helper({ open: true });
+							} else navigate('/cart')}}>
 								Cart{" "}
 								{cartItems.length ? (
 									<i className="bi bi-cart3">
@@ -263,7 +302,7 @@ export default function Header(props) {
 								) : (
 									<i className="bi bi-cart3"></i>
 								)}{" "}
-							</Link>
+							</a>
 						</li>
 					</ul>
 				</div>

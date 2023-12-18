@@ -5,6 +5,7 @@ import NoProducts from './NoProducts';
 
 
 const FilteredProducts = () => {
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [count,setcount]=useState(0);
     const location = useLocation();
@@ -26,17 +27,25 @@ const FilteredProducts = () => {
       } catch (error) {
         console.error('Error fetching products:', error);
       }
+      finally {
+        setLoading(false); // Set loading to false after data is fetched
+      };
     };
 
     fetchProducts();
   }, []);
   useEffect(() => {
     // Update the count when products or filter criteria change
-    const filteredProducts = products.filter((item) => item.pcity === city && item.category === category);
+    
+    const filteredProducts = products.filter((item) => item.pcity===city && item.category === category);
     setcount(filteredProducts.length);
   }, [products, city, category]);
   return (
-
+<>
+{loading ? (
+          <div>
+        <h2 style={{marginTop:"50px"}}>Loading....</h2></div> // Display a loading indicator while fetching data
+      ) :
     <div className='container'>
         <div className="bigbox" style={{marginTop:"20px", textAlign:"center"}}>
       <h2>{category} in {city}</h2>
@@ -56,8 +65,8 @@ const FilteredProducts = () => {
       </div>
       {!count && <NoProducts/>}
       </div>
-    </div>
-    
+    </div>}
+    </>
   );
 };
 

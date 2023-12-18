@@ -97,6 +97,16 @@ function App() {
 			</div>
 		);
 	};
+	const MyP = () => {
+		return (
+			<div className="App">
+				<Header data={login} helper={helper} />
+
+				<MyProducts />
+				<LoginDialog data={login} helper={helper} />
+			</div>
+		);
+	};
 	const CatP = () => {
 		return (
 			<div className="App">
@@ -130,7 +140,7 @@ function App() {
 		},
 		{
 			path: "/my-product",
-			element: <MyProducts />,
+			element: <MyP />,
 		},
 		{
 			path: "/catpage",

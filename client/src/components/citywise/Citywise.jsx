@@ -30,6 +30,7 @@ export default function Citywise() {
     const [selectedCity, setSelectedCity] = useState(cityData.find((cityN) => cityN.title.shortTitle === city));
 
     const handleElementClick = (category) => {
+        console.log("city is this",selectedCity);
       // Assuming you want to filter based on both city and category
       // You can update the state with the selected category and navigate to the filtered products page
       setSelectedCity({ ...selectedCity, selectedCategory: category });

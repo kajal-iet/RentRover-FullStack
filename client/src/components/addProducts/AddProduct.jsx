@@ -37,7 +37,7 @@ function AddProduct() {
 
     const location = useLocation();
     const { category,subcategory } = location.state || {};
-    console.log(category);
+    
     function MyNavigation()
     {
     
@@ -110,7 +110,6 @@ function AddProduct() {
       }, [userCoordinates, stateCityData]);
       
     const handleApi = () => {
-     console.log("anushka kajal madarchod")
         navigator.geolocation.getCurrentPosition((position) => {
             const formData = new FormData();
             formData.append('plat', position.coords.latitude)
@@ -120,7 +119,7 @@ function AddProduct() {
             formData.append('price', price)
             formData.append('category', category)
             formData.append('pimage', pimage)
-            formData.append('pcity', pcity)
+            formData.append('pcity', selectedCity)
 
             // formData.append('userId',localStorage.getItem('userId'))
             // formData.append('pimage2', pimage2)
@@ -133,10 +132,14 @@ function AddProduct() {
                 },
               })
                 .then((res) => {
-                    if (res.data.message) {
-                        // alert(res.data.message); 
+                    if (res.data.message) { 
                         console.log("button clicked");
-                        navigate('/')
+                        window.location.href = '/';
+                        setpname('');
+                        setpdesc('');
+                        setprice('');
+                        setSelectedCity('');
+                        setpimage('');
                     }
                 })
                 .catch((err) => {
@@ -173,13 +176,13 @@ function AddProduct() {
                       
                 <label className="label" id="lab" > Product Name </label> 
                 <input required className="form-control" id="inp" type="text" value={pname}
-                    onChange={(e) => { setpname(e.target.value) }} />
+                    onChange={(e) => { setpname(e.target.value) }} autoComplete="off"/>
                 <label className="label" id="lab"> Product Description </label> 
                 <input required className="form-control" id="inp" type="text" value={pdesc}
-                    onChange={(e) => { setpdesc(e.target.value) }} />
+                    onChange={(e) => { setpdesc(e.target.value) }} autoComplete="off"/>
                 <label className="label" id="lab"> Product Price</label> 
                 <input required className="form-control" id="inp" type="text" value={price}
-                    onChange={(e) => { setprice(e.target.value) }} />
+                    onChange={(e) => { setprice(e.target.value) }} autoComplete="off"/>
             
 
 
@@ -197,7 +200,7 @@ function AddProduct() {
 >
   {selectedCity === "" && <option value="" disabled>Select City</option>}
   {filteredCities.map((city) => (
-    <option key={`${city.state}-${city.city}`} value={`${city.state}-${city.city}`}>
+    <option key={city.city} value={city.city}>
       {city.city}, {city.state} ({city.distance.toFixed(2)} km)
     </option>
   ))}
@@ -217,7 +220,8 @@ function AddProduct() {
                         setpimage2(e.target.files[0])
                     }} /> */}</div>
                     <div className="footer">
-                <button type="submit" onClick={handleApi} className="btn btn-primary mt-3" id="btnn22"> SUBMIT </button></div>
+                <button type="submit" onClick={handleApi} className="btn btn-primary mt-3" id="btnn22"> SUBMIT </button>
+               </div>
                 </form>
             </div>
             

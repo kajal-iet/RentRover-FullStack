@@ -24,17 +24,6 @@ const Cart = () => {
     if (userId) {
       const url = `http://localhost:8000/liked-products/${userId}`;
 
-  //       axios.get(url)
-  //       .then((res) => {
-  //         if (res.data && res.data.cartItems) {
-  //           setCartItems(res.data.cartItems);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.error('Error fetching cartItems:', err);
-  //       });
-  //   }
-  // }, []);
   axios
         .get(url)
         .then((res) => {

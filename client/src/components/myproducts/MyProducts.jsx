@@ -17,17 +17,12 @@ function MyProducts() {
     const [selectedProductId, setSelectedProductId] = useState(null);
     const [cproducts, setcproducts] = useState([]);
     const [search, setsearch] = useState('');
-
-    // useEffect(() => {
-    //     if (!localStorage.getItem('token')) {
-    //         navigate('/login')
-    //     }
-    // }, [])
-
+    const [isUser,setIsUser]=useState(true);
+    
     useEffect(() => {
         const url = 'http://localhost:8000/my-product';
         let data = { userId: localStorage.getItem('userId') }
-       
+       if(data.userId!==null){
         axios.post(url, data)
             .then((res) => {
                 if (res.data.products) {
@@ -37,7 +32,10 @@ function MyProducts() {
             .catch((err) => {
                 alert(err)
             })
-    }, [])
+    }
+else{
+    setIsUser(false)
+}}, [])
 
     const handlesearch = (value) => {
         setsearch(value);
@@ -87,30 +85,10 @@ function MyProducts() {
 
 
     return (
+        <>
+        {isUser? 
         <div>
-            <Header search={search} handlesearch={handlesearch} handleClick={handleClick} />
-            {/* <Categories handleCategory={handleCategory} /> */}
-{/* 
-            <div className="d-flex justify-content-center flex-wrap">
-                {cproducts && products.length > 0 &&
-                    cproducts.map((item, index) => {
-
-                        return (
-                            <div key={item._id} className="card m-3 ">
-                                
-                                <img width="300px" height="200px" src={`http://localhost:8000/${item.pimage}`} />
-
-                                {/* <p className="m-2"> {item.pname}  | {item.category} </p> */}
-                                {/* <h3 className="m-2 text-danger"> {item.price} </h3>
-                                <p className="m-2 text-success"> {item.pdesc} </p> 
-                                    <i onClick={() => setModalOpen(true)}  class="bi bi-trash3-fill"></i>
-                                
-                            </div>
-                        )
-
-                    })}
-            </div> */} 
-
+          
             <h3 style={{marginTop:"30px",marginBottom:"20px",textAlign:"center"}}> MY PRODUCTS  </h3>
 
             <div className="d-flex justify-content-center flex-wrap">
@@ -144,7 +122,9 @@ function MyProducts() {
 
 
 
-        </div>
+        </div> : navigate('/')}
+
+        </>
     )
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./header.css";
 import img from "../images/logo3.png";
-import img1 from "../images/profileicon.png";
+import img1 from "../images/user.png";
 import { useNavigate,Link } from "react-router-dom";
 import axios from 'axios'
 import stateCityData from "./stateCityData";
@@ -12,7 +12,7 @@ import stateCityData from "./stateCityData";
 
 export default function Header(props) {
 	const navigate = useNavigate();
-	const [text, setText] = useState();
+	const [text, setText] = useState('');
 	const [open, setOpen] = useState(true);
     const [products, setProducts] = useState([]);
 	const [selectedState, setSelectedState] = useState('');
@@ -38,28 +38,6 @@ export default function Header(props) {
 	  function deg2rad(deg) {
 		return deg * (Math.PI / 180);
 	  }
-	  
-// 	const handleLocationChange = (event) => {
-// 		const selectedLocation = event.target.value;
-// 		const [state, city] = selectedLocation.split('-');
-// 		// console.log(state,"state",city,"city");
-// 		const selectedOption = event.target.options[event.target.selectedIndex];
-// 		const latitude = selectedOption.getAttribute("data-latitude");
-//   const longitude = selectedOption.getAttribute("data-longitude");
-//  console.log("state",state,"city",city);
-//   // Save to localStorage or perform any other actions
-//   localStorage.setItem('userLoc', `${latitude},${longitude}`);
-// 		if (city) {
-// 		  // City is selected
-// 		  setSelectedState(state);
-// 		  setSelectedCity(city);
-// 		  navigate(`/city/${city}`)
-// 		} else {
-// 		  // State is selected, reset city
-// 		  setSelectedState(selectedLocation);
-// 		  setSelectedCity('');
-// 		}
-// 	  };
 
 const handleLocationChange = (event) => {
 	
@@ -132,7 +110,8 @@ const handleLocationChange = (event) => {
 		try {
 			// props.setAcc("");
 			window.localStorage.clear();
-			window.location.reload();
+			// window.location.reload();
+			navigate("/")
 		} catch (ee) {
 			console.log(ee.response.data.message);
 		}
@@ -251,13 +230,17 @@ const handleLocationChange = (event) => {
 										<label htmlFor="toggler2">
 											<img className="logo" src={img1} />
 										</label>
-										<div className="dropdown2" id="dropdown22">
+										<div className="dropdown2" id="dropdown22" >
 											<span style={{ whiteSpace: "nowrap", cursor: "pointer" }}>
 												<Link to="/my-product" style={{ textDecoration: "none", color: "black" }}>
-												<i class="bi bi-megaphone"></i> My Ads
+												<i className="bi bi-megaphone"></i> My Ads
 												</Link>
 											</span>
-
+											<span style={{ whiteSpace: "nowrap", cursor: "pointer" }}>
+												<Link to="/update-profile" style={{ textDecoration: "none", color: "black" }}>
+												<i className="bi bi-pen"></i> Update Profile
+												</Link>
+											</span>
 											<span style={{ whiteSpace: "nowrap", cursor: "pointer" }}>
 												<a href="/" style={{ textDecoration: "none", color: "black" }} onClick={handleLogout}>
 													<i className="bi bi-power"></i> Logout
@@ -297,7 +280,7 @@ const handleLocationChange = (event) => {
 										<span className="position-absolute top-3 start-90 translate-middle bg-warning rounded-circle" style={{ fontSize: "10px", color: "white", padding: "3px 7px 3px 7px", fontWeight: "bold" }}>
 											{cartItems.length}{" "}
 										</span>
-										<span class="visually-hidden">Cart Items</span>
+										<span className="visually-hidden">Cart Items</span>
 									</i>
 								) : (
 									<i className="bi bi-cart3"></i>

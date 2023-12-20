@@ -29,24 +29,20 @@ const ProductDetail = ({ product }) => {
                 SHOW CONTACT DETAILS <i className="bi bi-plus"></i>
             </button>}
         <div className="contacts" style={{ textAlign: "left", marginTop: "15px", marginLeft: "0" }}>
-            {user && user.username && <h6>{user.username}</h6>}
-            {user && user.mobile && <h6>{user.mobile}</h6>}
-            {user && user.email && <h6>{user.email}</h6>}
+            {user && user.username && <h6><i class="bi bi-pencil-fill"></i> {user.username}</h6>}
+            {user && user.mobile && <h6><i class="bi bi-telephone-fill"></i> {user.mobile}</h6>}
+            {user && user.email && <h6><i class="bi bi-envelope-at"></i> {user.email}</h6>}
         </div>
     </div>
 
-    <div style={{ fontSize: "14px", marginTop: "10px", marginLeft: "0" }}>
-        {/* Rental Terms:
-        <ul>
-            <li>Deposit Requirements: {product.depositRequirements}</li>
-            <li>Cancellation Policies: {product.cancellationPolicies}</li>
-        </ul> */}
-    </div>
 
     <div>
-        <small style={{ fontSize: "12px", float: "left", marginTop: "8px", marginLeft: "0" }}>
+        <small style={{ fontSize: "12px", float: "left", marginTop: "20px", marginLeft: "0" }}>
             <div><i className="bi bi-tag-fill" style={{ color: "green" }}></i> Rent products at your own liberty</div>
             <div><i className="bi bi-tag-fill" style={{ color: "green" }}></i> Efficient. Effective. Effortless.</div>
+            <div><i className="bi bi-tag-fill" style={{ color: "green" }}></i> Experience More, Own Less – Renting, the New Norm.</div>
+            <div><i className="bi bi-tag-fill" style={{ color: "green" }}></i> Unlock Possibilities – Rent Your Way to Adventure!</div>
+            <div><i className="bi bi-tag-fill" style={{ color: "green" }}></i> Checked for stability; free replacement for any defects.</div>
         </small>
     </div>
 

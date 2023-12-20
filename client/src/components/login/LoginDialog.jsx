@@ -3,6 +3,7 @@ import { Dialog } from "@mui/material";
 import img from "../login/images/left2.png";
 import axios from "axios";
 import "./loginDialog.css";
+import { useNavigate } from "react-router-dom";
 // import authenticateSignup from '../../service/api'
 // import { authenticateLogin } from "../../service/api";
 
@@ -16,7 +17,8 @@ export default function LoginDialog(props) {
 	const [page, setPage] = useState("login");
 	const [signup, setSignup] = useState(signupInitialValues);
 	const [email, setEmail] = useState({ email: "", password: "" });
-
+    const [visible,setVisible]=useState('');
+	const navigate=useNavigate();
 	// const [acc,setAcc]=useState(loginInitialValues)
 	// const [ login, setLogin ] = useState(loginInitialValues);
 	const [error, setError] = useState(false);
@@ -55,16 +57,19 @@ export default function LoginDialog(props) {
 			const response = await axios.post('http://localhost:8000/login', { email: email.email, password: email.password });
 			
 			if (response.data.message) {
-				// alert(response.data.message)
+				if(response.data.message==="not exist"){
+					setVisible('User Does Not Exist.');
+				}
+				else if(response.data.message==="password wrong"){
+					setVisible('Invalid Password.');
+				}
 				if (response.data.token) {
 					props.helper({ email: email.email, password: email.password, open: false });
 					localStorage.setItem('token', response.data.token);
 					localStorage.setItem('userId', response.data.userId);
-					// navigate('/');
+					navigate('/');
 				}
 			}
-			console.log("login object", props.data);
-			console.log("the response is", response);
 		} catch (err) {
 			console.log(err);
 			setError(err);
@@ -103,6 +108,7 @@ export default function LoginDialog(props) {
 											onValueChange(e);
 										}}
 									/>
+									<small>{visible}</small>
 								</div>
 								{error && (
 									<small>
@@ -153,7 +159,7 @@ export default function LoginDialog(props) {
 									Login Here
 								</u>
 							</h6>
-							<form id="form2" style={{ margin: "40px 25px 10px 25px" }}>
+							<form id="form2" style={{ margin: "40px 25px 10px 25px" }} onSubmit={signupUser}>
 								<div className="form-group" style={{ marginBottom: "8px" }}>
 									<label htmlFor="exampleInputEmail1" style={{ marginBottom: "5px" }}>
 										Enter your Email address
@@ -164,6 +170,7 @@ export default function LoginDialog(props) {
 										id="exampleInputEmail1"
 										aria-describedby="emailHelp"
 										placeholder="Email Adress"
+										required="true"
 										name="email"
 										onChange={(e) => {
 											onInputChange(e);
@@ -178,6 +185,7 @@ export default function LoginDialog(props) {
 										type="text"
 										className="form-control"
 										id="name"
+										required="true"
 										aria-describedby="emailHelp"
 										placeholder="Name"
 										name="name"
@@ -191,9 +199,11 @@ export default function LoginDialog(props) {
 										Enter your Phone Number
 									</label>
 									<input
-										type="phone"
+										type="text"
 										className="form-control"
 										id="phone"
+										required="true"
+										pattern="[1-9]{10}"
 										aria-describedby="emailHelp"
 										placeholder="Phone"
 										name="phone"
@@ -215,6 +225,8 @@ export default function LoginDialog(props) {
 										className="form-control"
 										id="exampleInputPassword1"
 										placeholder="Password"
+										required="true"
+										minLength="6"
 										name="password"
 										onChange={(e) => {
 											onInputChange(e);
@@ -222,7 +234,7 @@ export default function LoginDialog(props) {
 									/>
 								</div>
 
-								<button type="submit" style={{ marginBottom: "20px", marginTop: "20px", width: "100%", backgroundColor: "#015e65", border: "none" }} className="btn btn-primary" onClick={signupUser}>
+								<button type="submit" style={{ marginBottom: "20px", marginTop: "20px", width: "100%", backgroundColor: "#015e65", border: "none" }} className="btn btn-primary" >
 									Sign Up
 								</button>
 							</form>

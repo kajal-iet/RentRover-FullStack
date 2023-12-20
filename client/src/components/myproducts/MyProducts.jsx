@@ -96,14 +96,14 @@ else{
                     products.map((item, index) => {
 
                         return (
-                            <div key={item._id} className="card m-3 ">
+                            <div key={item._id} className="card m-3 " style={{width:"300px"}}>
                                 
-                                <img width="300px" height="200px" src={`http://localhost:8000/${item.pimage}`} />
+                                <img width="100%" height="200px" src={`http://localhost:8000/${item.pimage}`} />
                                 {/* <p className="m-2"> {item.pname}  | {item.category} </p> */}
-                                <h3 className="m-2 text-danger"> {item.price} </h3>
-                                <h5 className="m-2 text-primary"> {item.pname} </h5>
+                                <h3 className="m-2 text-danger"> Rs. {item.price}/day </h3>
+                                <h5 className="m-2 text-primary"> {item.pname} | {item.category}</h5>
                                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between"  }}>
-  <p className="m-2 text-success" style={{ marginRight: "10px" }}>
+  <p className="m-2 text-success" style={{ marginRight: "10px" ,wordWrap:"break-word",width:"70%"}}>
     {item.pdesc}
   </p>
   <i style={{marginRight:"10px",cursor:"pointer",fontSize:"22px"}} onClick={() => {setSelectedProductId(item._id); setModalOpen(true)}} className="bi bi-trash3-fill"></i>

@@ -1,0 +1,28 @@
+.abcde {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(235, 229, 229, 0.836);
+    /* padding: 5px 8px; */
+  }
+  
+  
+  .FreshMango {
+    /* float: left; */
+    cursor: pointer;
+    width: 20px;
+    height: 58px;
+    color: #070101;
+    /* display: block; */
+    flex-grow: 1;
+    overflow: hidden;
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cherry{
+    float: left;
+    padding: 5px 25px;
+    color: #070101;
+  }
+  
+  

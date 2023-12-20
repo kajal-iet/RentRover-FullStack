@@ -52,7 +52,7 @@ const FilteredProducts = () => {
       <div className='d-flex justify-content-center flex-wrap'>
         {products.map((item, index) => (
            (item.pcity===city  && item.category===category)  &&
-          <div className="card" style={{ margin: "20px",width:"250px" }} key={index} onClick={()=>{
+          <div className="card" style={{ margin: "20px",width:"250px",cursor:"pointer" }} key={index} onClick={()=>{
            navigate(`/product/${item._id}`)
           }}>
             <img width="250px" height="150px" src={`http://localhost:8000/${item.pimage}`} alt={item.pname} />

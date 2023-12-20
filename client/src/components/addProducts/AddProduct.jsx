@@ -134,7 +134,7 @@ function AddProduct() {
                 .then((res) => {
                     if (res.data.message) { 
                         console.log("button clicked");
-                        window.location.href = '/';
+                        
                         setpname('');
                         setpdesc('');
                         setprice('');
@@ -220,7 +220,7 @@ function AddProduct() {
                         setpimage2(e.target.files[0])
                     }} /> */}</div>
                     <div className="footer">
-                <button type="submit" onClick={handleApi} className="btn btn-primary mt-3" id="btnn22"> SUBMIT </button>
+                <button type="submit" onClick={()=>{handleApi(); navigate("/")}} className="btn btn-primary mt-3" id="btnn22"> SUBMIT </button>
                </div>
                 </form>
             </div>

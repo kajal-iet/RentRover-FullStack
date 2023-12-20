@@ -92,7 +92,6 @@ const Users = mongoose.model('Users', userSchema);
 // app.post('/liked-products', userController.likedProducts)
 // app.post('/my-products', productController.myProducts)
 app.post("/addproduct", upload.single("pimage"), (req, res) => {
-  console.log("kajal")
     const plat = req.body.plat;
     const plong = req.body.plong;
   const pname = req.body.pname;
@@ -131,7 +130,6 @@ app.post("/liked-products", (req, res) => {
 
   Users.updateOne({ _id: userId }, { $addToSet: { cartItems: productId } })
     .then(() => {
-      console.log("updted items");
       res.send({ message: "liked success." });
     })
     .catch(() => {
@@ -279,7 +277,25 @@ app.get("/get-user/:uId", (req, res) => {
       res.send({ message: "server err user not found" });
     });
 });
-
+app.post("/update-profile", async (req, res) => {
+  const { password, mobileNumber, email,name } = req.body;
+  const userId = req.body.userId; 
+ console.log(req.body)
+  try {
+    // Update user profile in the database
+    const updatedUser = await Users.findByIdAndUpdate(
+      userId,
+      { password:password, mobile:mobileNumber, email:email,username:name },
+      { new: true }
+    );
+    console.log(updatedUser);
+    // Handle the response as needed
+    res.status(200).json({ message: "Profile updated successfully", user: updatedUser });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -287,7 +303,7 @@ app.post("/login", (req, res) => {
   Users.findOne({ email: email })
     .then((result) => {
       if (!result) {
-        res.send({ message: "user not found." });
+        res.send({ message: "not exist" });
       } else {
         if (result.password == password) {
           const token = jwt.sign(
@@ -304,7 +320,7 @@ app.post("/login", (req, res) => {
           });
         }
         if (result.password != password) {
-          res.send({ message: "password wrong." });
+          res.send({ message: "password wrong" });
         }
       }
     })

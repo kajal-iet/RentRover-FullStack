@@ -39,7 +39,7 @@ const ActionItem = ({ product,id,props }) => {
 
     return (
         <div className='left'>
-            <img src={`http://localhost:8000/${product.pimage}`} className='img' alt='img'/><br />
+            <img src={`http://localhost:8000/${product.pimage}`} className='img' alt='img' style={{border:"1px solid gray"}}/><br />
             <button onClick={() => addItemToCart()} style={{marginRight: 10, background: '#ff9f00'}} variant="contained" className='btn2'><i className="bi bi-cart3"></i>Add to Cart</button>
             <button /*onClick={() => buyNow()}*/ style={{background: '#fb641b'}} variant="contained" className='btn2'> Buy Now</button>
         </div>

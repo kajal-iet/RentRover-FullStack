@@ -31,11 +31,9 @@ const TotalView = ({ cartItems }) => {
                 {/* <div className='Typography1'>Discount
                     <span className='Price'>-₹{discount}</span>
                 </div > */}
-                <div className='Typography1'>Delivery Charges
-                    <span className='Price'>₹40</span>
-                </div >
+                
                 <div className='TotalAmount1'>Total Amount
-                    <div className='Price'>₹{parseInt(price) + parseInt(40)}</div>
+                    <div className='Price'>₹{parseInt(price)}</div>
                 </div>
                 {/* <div className='Discount'>You will save ₹{discount - 40} on this order</div> */}
             </div>

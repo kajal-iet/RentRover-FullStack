@@ -44,12 +44,13 @@ console.log("lohin",props.login)
                 8 Ratings & 1 Reviews
                 
               </div> */}
-              <div className="cont" style={{color:"#875608"}}>
+              <div className="cont" style={{color:"#875608",marginTop:"20px"}}>
                 <span style={{ fontSize: 28 }}>₹{product.price}/day</span>&nbsp;&nbsp;&nbsp;
                 
                 &nbsp;&nbsp;&nbsp;
                 {/* <span style={{ color: '#388E3C' }}>{product.price.discount} off</span> */}
               </div>
+              <small className="cont"><i class="bi bi-geo-fill"></i> {product.pcity}</small>
               <ProductDetail product={product} data={props.login} helper={props.helper} />
             </div>
           </div>

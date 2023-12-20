@@ -75,7 +75,7 @@ const SearchFiltered = () => {
                 return true; // No user location, include all products
                 })
               .map((product) => (
-                <div className="card" style={{ margin: "20px",width:"250px" }}  onClick={()=>{
+                <div className="card" style={{ margin: "20px",width:"250px",cursor:"pointer" }}  onClick={()=>{
                     navigate(`/product/${product._id}`)
                    }}>
                      <img width="250px" height="150px" src={`http://localhost:8000/${product.pimage}`} alt={product.pname} />

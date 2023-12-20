@@ -12,6 +12,7 @@ import Cart from "./components/cart/Cart";
 import FilteredProducts from "./components/filteredProducts/FilteredProducts";
 import SearchFiltered from "./components/filteredProducts/SearchFiltered";
 import MyProducts from "./components/myproducts/MyProducts";
+import UpdateProfile from "./components/login/UpdateProfile";
 
 function App() {
 	const loginInitialValues = {
@@ -117,6 +118,13 @@ function App() {
 			</div>
 		);
 	};
+	const Update = () => {
+		return (
+			<div className="App">
+		<UpdateProfile />
+				</div>
+		);
+	};
 	const router = createBrowserRouter([
 		{
 			path: "/",
@@ -153,6 +161,10 @@ function App() {
 		  {
 			path: '/search-filtered',
 			element: <SearchFil />,
+		  },
+		  {
+			path: '/update-profile',
+			element: <Update />,
 		  },
 	]);
 	return (

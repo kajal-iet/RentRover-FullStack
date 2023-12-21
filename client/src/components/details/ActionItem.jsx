@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 // import { addToCart } from '../../redux/actions/cartActions';
 // import { useDispatch } from 'react-redux';
 
-const ActionItem = ({ product,id,props }) => {
+const ActionItem = ({ product,id,helper }) => {
     const navigate = useNavigate();
     
 
@@ -18,7 +18,7 @@ const ActionItem = ({ product,id,props }) => {
         let userId = localStorage.getItem('userId');
 
         if (!userId) {
-            props.helper({open:true})
+            helper({open:true})
             return;
         }
 

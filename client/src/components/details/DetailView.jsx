@@ -11,7 +11,7 @@ const DetailView = (props) => {
   const { id } = useParams();
   const productId = String(id);
   const [product, setProduct] = useState(null);
-console.log("lohin",props.login)
+
   useEffect(() => {
     console.log("ek object",productId)
     const fetchProductDetails = async () => {
@@ -35,7 +35,7 @@ console.log("lohin",props.login)
         <div className="container">
           <div className="overall">
             <div>
-              <ActionItem product={product} id={productId}/>
+              <ActionItem product={product} id={productId} helper={props.helper}/>
             </div>
             <div className="right" style={{marginLeft:"80px"}}>
               <div className="cont" style={{fontWeight:"600",color:"#6b0727"}}>{product.pname}</div>

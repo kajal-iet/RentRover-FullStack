@@ -49,17 +49,21 @@ const handleLocationChange = (event) => {
   
 	// Save to localStorage or perform any other actions
 	localStorage.setItem('userLoc', `${latitude},${longitude}`);
+	localStorage.setItem('userCity', city);
   
 	if (city) {
 	  // City is selected
+	  console.log("city",selectedCity);
 	  setSelectedState(state);
+
 	  setSelectedCity(city);
+	  console.log(city,selectedCity,state,selectedState)
 	  navigate(`/city/${city}`);
 	  window.location.reload();
 	} else {
 	  // State is selected, reset city
 	  setSelectedState(state);
-	  setSelectedCity('');
+	//   setSelectedCity('');
 	}
   };
   
@@ -67,11 +71,9 @@ const handleLocationChange = (event) => {
   
   useEffect(() => {
 	// Fetch user's initial location from localStorage
-	const initialLocation = localStorage.getItem('userLoc');
+	const initialLocation = localStorage.getItem('userCity');
 	if (initialLocation) {
-	  const [state, city] = initialLocation.split(',');
-	  setSelectedState(state);
-	  setSelectedCity(city);
+	  setSelectedCity(initialLocation);
 	}
   }, []); // Run this effect only once on component mount
   

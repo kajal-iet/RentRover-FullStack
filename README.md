@@ -1,2 +1,4 @@
-# Rentals-Website
-A travel specific rental website to allow the interaction between local owners willing to lend the travel gear as well as vehicles, hotels etc. and the travelers.
+# Gear-Share-Rent
+Gear-Share-Rent is a cutting-edge online platform that serves as a nexus between travelers and local
+equipment owners. This innovative marketplace empowers users to explore a myriad of services, from
+travel essentials to specialized gear, provided by locals.

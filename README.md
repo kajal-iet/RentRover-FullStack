@@ -1,4 +1,4 @@
-![image](https://github.com/anushkagaur11/Rentals-Website-main/assets/91654306/960070c2-f2b4-4fa5-b17c-00a39b9d26ed)# Gear-Share-Rent
+# Gear-Share-Rent
 
 Technology Stack :- MongoDB, ExpressJS, ReactJS, NodeJS
 Gear-Share-Rent is a cutting-edge online platform that serves as a nexus between travelers and local

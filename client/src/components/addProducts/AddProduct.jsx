@@ -203,6 +203,7 @@ function AddProduct() {
     <option key={city.city} value={city.city}>
       {city.city}, {city.state} ({city.distance.toFixed(2)} km)
     </option>
+    
   ))}
 </select>
 

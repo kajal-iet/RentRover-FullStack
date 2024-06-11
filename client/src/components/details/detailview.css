@@ -11,3 +11,65 @@ font-size: 20px;
 .cont{
     /* margin-left: -200px; */
 }
+.reviews{
+     margin-left: 100px; 
+     margin-top:50px;
+}
+/* Add these styles to your CSS file or inside a <style> tag in your component file */
+/* detailview.css */
+/* detailview.css */
+/* detailview.css */
+
+.dialog-content {
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+  }
+  
+  .review-form {
+    margin: -20px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f2f2f2;
+  }
+  
+  .review-form div {
+    margin-bottom: 20px;
+  }
+  
+  .review-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .review-form select,
+  .review-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .review-form textarea {
+    height: 100px; /* Adjust height as needed */
+  }
+  
+  .review-form button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .review-form button:hover {
+    background-color: #45a049;
+  }
+  

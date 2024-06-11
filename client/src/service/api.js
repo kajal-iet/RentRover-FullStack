@@ -23,3 +23,11 @@ export const authenticateLogin = async (user) => {
   }
 }
 
+// export  const payUsingStripe = async (data) => {
+//       try {
+//           let response = await axios.post(`${URL}/checkout`, data);
+//           return response.data;
+//       } catch (error) {
+//           console.log('Error', error);
+//       }
+//   }

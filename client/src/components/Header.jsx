@@ -155,8 +155,10 @@ const handleLocationChange = (event) => {
         
 		<option value="">{selectedCity? selectedCity : "Select Location"}</option>
 		{Object.keys(stateCityData).map((state, index) => (
+		
           <optgroup key={index} label={state} >
             {Object.keys(stateCityData[state]).map((city, cityIndex) => (
+			
       <option key={cityIndex} value={`${state}-${city}`} data-latitude={stateCityData[state][city].latitude} data-longitude={stateCityData[state][city].longitude}>
         {city}
       </option>

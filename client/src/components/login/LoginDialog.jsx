@@ -55,7 +55,7 @@ export default function LoginDialog(props) {
 		e.preventDefault();
 		try {
 			const response = await axios.post('http://localhost:8000/login', { email: email.email, password: email.password });
-			
+			console.log(response.data)
 			if (response.data.message) {
 				if(response.data.message==="not exist"){
 					setVisible('User Does Not Exist.');
@@ -67,6 +67,7 @@ export default function LoginDialog(props) {
 					props.helper({ email: email.email, password: email.password, open: false });
 					localStorage.setItem('token', response.data.token);
 					localStorage.setItem('userId', response.data.userId);
+					localStorage.setItem('name', email.email);
 					navigate('/');
 				}
 			}
@@ -203,7 +204,7 @@ export default function LoginDialog(props) {
 										className="form-control"
 										id="phone"
 										required="true"
-										pattern="[1-9]{10}"
+										// pattern="[1-9]{10}"
 										aria-describedby="emailHelp"
 										placeholder="Phone"
 										name="phone"

@@ -5,6 +5,7 @@ var jwt = require("jsonwebtoken");
 const multer = require("multer");
 // const productController = require('./controllers/productController');
 // const userController = require('./controllers/userController');
+const stripe=require("stripe")("sk_test_51PODdJ05xIQc2Sw5tVB1cSP7Sp0WQKJmzJjvrczZibrZU2Qvf6amFaDa05gk1jT43c0uzZGbyABvS3wD1ob7qX8c00IR2oZ4FL")
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,8 +33,27 @@ app.get("/", (req, res) => {
   res.send("hello...");
 });
 mongoose.connect(
-  "mongodb+srv://anam23:anamnewdb08@cluster0.kimmomy.mongodb.net/?retryWrites=true&w=majority"
+  "mongodb+srv://joshianuj1712:password1712@cluster0.k6o9wag.mongodb.net/"
 );
+const reviewSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'name is required']
+  },
+  rating: {
+    type: Number,
+    default: 0
+  },
+  comment:{
+    type:String,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Users',
+    required: [true, 'user required'],
+  },
+}, { timestamps: true });
+
 let schema = new mongoose.Schema({
   pname: String,
   pdesc: String,
@@ -51,7 +71,16 @@ let schema = new mongoose.Schema({
     coordinates: {
         type: [Number]
     }
-}
+},
+reviews: [reviewSchema],
+  rating: {
+    type: Number,
+    default: 0
+  },
+  numReviews: {
+    type: Number,
+    default: 0
+  }
 });
 schema.index({ pLoc: '2dsphere' });
 const Products = mongoose.model("Products", schema);
@@ -67,6 +96,8 @@ const Products = mongoose.model("Products", schema);
 //   Products.remove({ userid: this._id }).exec();
 //   next();
 // });
+
+
 const userSchema = new mongoose.Schema({
   email: String,
   password: String,
@@ -110,7 +141,7 @@ app.post("/addproduct", upload.single("pimage"), (req, res) => {
     pcity: pcity,
     addedBy: addedBy, pLoc: {
         type: 'Point', coordinates: [plat, plong]
-    }
+    },
   });
   product
     .save()
@@ -299,7 +330,6 @@ app.post("/update-profile", async (req, res) => {
 app.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-
   Users.findOne({ email: email })
     .then((result) => {
       if (!result) {
@@ -328,6 +358,86 @@ app.post("/login", (req, res) => {
       res.send({ message: "server err" });
     });
 });
+
+
+app.post("/checkout",async(req,res)=>{
+  const {products,Amount} = req.body;
+ 
+
+
+  const lineItems = products.map((product)=>({
+      price_data:{
+          currency:"inr",
+          product_data:{
+              name:product.pname,
+              
+          },
+          unit_amount:Amount*100,
+      },
+      quantity:1
+  }));
+
+  const session = await stripe.checkout.sessions.create({
+      payment_method_types:["card"],
+      line_items:lineItems,
+      mode:"payment",
+      success_url:"http://localhost:3000",
+      cancel_url:"http://localhost:3000/cart",
+  });
+
+  res.json({id:session.id})
+
+})
+
+app.put("/review/:productId", async (req, res) => {
+  try {
+    const { comment, rating, userId, userName } = req.body;
+
+    const product = await Products.findById(req.params.productId);
+
+    if (!product) {
+      return res.status(404).json({ success: false, message: "Product not found" });
+    }
+
+    const alreadyReviewed = product.reviews.find((r) => {
+      return r.user.toString() === userId.toString();
+    });
+
+    if (alreadyReviewed) {
+      return res.status(200).json({ success: false, message: "Product already reviewed" });
+    }
+
+    const review = {
+      name: userName,
+      rating: Number(rating),
+      comment,
+      user: userId,
+    };
+
+    product.reviews.push(review);
+
+    product.numReviews = product.reviews.length;
+    product.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
+
+    await product.save();
+
+    res.status(200).json({ success: true, message: "Review added successfully",review });
+  } catch (error) {
+    console.error(error);
+    if (error.name === "CastError") {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid product ID",
+      });
+    }
+    res.status(500).json({
+      success: false,
+      message: "Error in review comment API",
+      error: error.message,
+    });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

@@ -14,7 +14,7 @@ const GroupButton = () => {
 
     return (
         <div>
-            <button className="btn" onClick={() => handleDecrement()} disabled={counter == 0}>-</button>
+            <button className="btn" onClick={() => handleDecrement()} disabled={counter === 0}>-</button>
             <button disabled>{counter}</button>
             <button className="btn" onClick={() => handleIncrement()}>+</button>
         </div>

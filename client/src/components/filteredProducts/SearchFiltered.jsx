@@ -43,7 +43,7 @@ const SearchFiltered = () => {
 
     fetchProducts();
   }, []);
-
+// console.log(products[0].price.substr(0,12)+products[0].price.substr(13,6))
   return (
 
     <div className='container'>
@@ -51,7 +51,7 @@ const SearchFiltered = () => {
       <h2>Search Results for {text}</h2>
       <div className='d-flex justify-content-center flex-wrap'>
       {products
-              .filter((product) =>
+              .filter((product) =>  
 			  product.pname.toLowerCase().includes(text.toLowerCase()) ||
 			  product.pdesc.toLowerCase().includes(text.toLowerCase())
               )
@@ -80,7 +80,7 @@ const SearchFiltered = () => {
                    }}>
                      <img width="250px" height="150px" src={`http://localhost:8000/${product.pimage}`} alt={product.pname} />
          
-                     <h3 className="m-2 price-text text-danger"> Rs. {product.price} /- </h3>
+                     <h3 className="m-2 price-text text-danger">{product.price.substr(0,12)+"₹"+product.price.substr(13,1)+"99"} /day</h3>
                      <p className="m-2"> {product.pname}  | {product.category} </p>
                      <p className="m-2 text-success"> {product.pdesc} </p>
                    </div>

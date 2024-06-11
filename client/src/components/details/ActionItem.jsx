@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 const ActionItem = ({ product,id,helper }) => {
     const navigate = useNavigate();
     
-
     const addItemToCart = async () => {
         // e.stopPropagation();
         let userId = localStorage.getItem('userId');
@@ -41,7 +40,7 @@ const ActionItem = ({ product,id,helper }) => {
         <div className='left'>
             <img src={`http://localhost:8000/${product.pimage}`} className='img' alt='img' style={{border:"1px solid gray"}}/><br />
             <button onClick={() => addItemToCart()} style={{marginRight: 10, background: '#ff9f00'}} variant="contained" className='btn2'><i className="bi bi-cart3"></i>Add to Cart</button>
-            <button /*onClick={() => buyNow()}*/ style={{background: '#fb641b'}} variant="contained" className='btn2'> Buy Now</button>
+           {/* <button onClick={() => buyNow()} style={{background: '#fb641b'}} variant="contained" className='btn2'> Buy Now</button> */}
         </div>
     )
 }

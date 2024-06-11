@@ -40,6 +40,7 @@ const Cart = () => {
     }
   }, []);
  
+
     return (
         <>
          {loading ? (
@@ -55,9 +56,9 @@ const Cart = () => {
                                 <CartItem item={item} />
                             ))
                         }
-                    <div className='bottom'>
-                        <button className='StyledButton2' /*onClick={() => buyNow()}*/ variant="contained">Place Order</button>
-                    </div>
+                     {/* <div className='bottom'>
+                        <button className='StyledButton2' onClick={() => buyNow()} variant="contained">Place Order</button>
+                    </div>  */}
                 </div>
                 <div className='right' >
                     <TotalView cartItems={cartItems} />
